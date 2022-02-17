@@ -6,39 +6,57 @@
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:03:59 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/02/15 16:22:54 by qbonvin          ###   ########.fr       */
+/*   Updated: 2022/02/17 17:22:56 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <signal.h>
-#include <stdlib.h>
+#include "minitalk.h"
 
-void    signal_received(int sig);
+void	signal_received(int sig);
 
-void    signal_received(int sig)
+int	main(void)
 {
-    if (sig == SIGUSR1)
-    {
-        write(1, "j'ai recu le signal", 19);
-    }
-    if (sig == SIGUSR2)
-        write(1, "j'ai recu le 2eme signal", 24);
-    return ;
+	int	pid_t;
+
+	pid_t = getpid();
+	printf("%d\n", pid_t);
+	signal(SIGUSR1, signal_received);
+	signal(SIGUSR2, signal_received);
+	while (1)
+		pause();
+	return (0);
 }
 
-int main(void)
+void	signal_received(int sig)
 {
-    int pid_t = getpid();
-    printf("%d\n", pid_t);
-    while (1)
-    {
-        signal(SIGUSR1, signal_received);
-        pause();
-        return (0);
-    }
-    return (0);
+	static int	j = 8;
+	static int 	tab[8];
+	int 		res;
+
+	if (sig == SIGUSR1)
+		tab[--j] = 1;
+	else if (sig == SIGUSR2)
+		tab[--j] = 0;
+	if (j == 0)
+	{
+		res = 0;
+		while (j < 8)
+		{
+			if (tab[j] == 1)
+				res += ft_pow(j);
+			j++;
+		}
+		write(1, &res, 1);
+		j = 8;
+	}
 }
 
+int	ft_pow(int loop)
+{
+	int nb;
+	
+	nb = 1;
+	while (loop--)
+		nb *= 2;
+	return (nb);
+}
