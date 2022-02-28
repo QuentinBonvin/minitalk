@@ -6,7 +6,7 @@
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:03:20 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/02/17 17:24:14 by qbonvin          ###   ########.fr       */
+/*   Updated: 2022/02/28 13:14:45 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char *argv[])
 	}
 	pid = ft_atoi(argv[1]);
 	ft_string_to_binary(argv[2], pid);
-	//printf("%s", msg);
 	return (0);
 }
 
@@ -44,7 +43,7 @@ void	ft_string_to_binary(char *str, int pid)
 				c = c - (1 << j);
 			}
 			else
-				kill(pid, SIGUSR2);	
+				kill(pid, SIGUSR2);
 			usleep(150);
 			j--;
 		}

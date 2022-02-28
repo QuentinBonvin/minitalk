@@ -6,7 +6,7 @@
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:03:59 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/02/17 17:22:56 by qbonvin          ###   ########.fr       */
+/*   Updated: 2022/02/28 13:15:53 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(void)
 
 void	signal_received(int sig)
 {
-	static int	j = 8;
-	static int 	tab[8];
-	int 		res;
+	static int		j = 8;
+	static int		tab[8];
+	int				res;
 
 	if (sig == SIGUSR1)
 		tab[--j] = 1;
@@ -53,8 +53,8 @@ void	signal_received(int sig)
 
 int	ft_pow(int loop)
 {
-	int nb;
-	
+	int	nb;
+
 	nb = 1;
 	while (loop--)
 		nb *= 2;
