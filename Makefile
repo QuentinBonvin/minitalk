@@ -1,9 +1,13 @@
 NAME = server client
+LIBFT = ./libft
+LIBFTOBJ = ./libft/*.o
+LIB = ./libft/libft.a
 
 all : ${NAME}
 
 server : server.o
-	gcc -Wall -Werror -Wextra -o server server.o
+	make -C ${LIBFT}
+	gcc -Wall -Werror -Wextra ${LIB} -o server server.o
 
 server.o : server.c
 	gcc -Wall -Werror -Wextra -o server.o -c server.c
@@ -16,6 +20,7 @@ client.o : client.c
 
 clean :
 	rm -rf *.o
+	rm -rf ${LIBFTOBJ}
 
 fclean : clean
 	rm -rf ${NAME}

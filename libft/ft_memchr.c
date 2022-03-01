@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 09:34:19 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/03/01 11:54:00 by qbonvin          ###   ########.fr       */
+/*   Created: 2021/11/04 09:32:02 by qbonvin           #+#    #+#             */
+/*   Updated: 2021/11/24 13:27:19 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <ctype.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <stdarg.h>
-# include <signal.h>
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*str;
+	unsigned char	letter;
+	unsigned int	i;
 
-void	ft_string_to_binary(char *str, int pid);
-int		ft_pow(int loop);
-int		kill(pid_t pid, int sig);
-void	signal_received(int sig);
-
-#endif
+	i = 0;
+	str = (unsigned char *)s;
+	letter = (unsigned char)c;
+	while (i < n)
+	{
+		if (*str == letter)
+		{
+			return (str);
+		}
+		i++;
+		str++;
+	}
+	return (NULL);
+}

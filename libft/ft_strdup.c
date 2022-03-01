@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 09:34:19 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/03/01 11:54:00 by qbonvin          ###   ########.fr       */
+/*   Created: 2021/11/09 11:42:09 by qbonvin           #+#    #+#             */
+/*   Updated: 2021/11/09 14:22:02 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <ctype.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <stdarg.h>
-# include <signal.h>
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	int		index;
 
-void	ft_string_to_binary(char *str, int pid);
-int		ft_pow(int loop);
-int		kill(pid_t pid, int sig);
-void	signal_received(int sig);
-
-#endif
+	index = 0;
+	str = malloc(sizeof(*str) * ft_strlen(s1) + 1);
+	if (str == 0)
+	{
+		return (0);
+	}
+	while (s1[index] != '\0')
+	{
+		str[index] = s1[index];
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
+}

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qbonvin <qbonvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 09:34:19 by qbonvin           #+#    #+#             */
-/*   Updated: 2022/03/01 11:54:00 by qbonvin          ###   ########.fr       */
+/*   Created: 2021/10/27 08:13:09 by qbonvin           #+#    #+#             */
+/*   Updated: 2021/11/23 09:25:55 by qbonvin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <ctype.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <stdarg.h>
-# include <signal.h>
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*memory;
 
-void	ft_string_to_binary(char *str, int pid);
-int		ft_pow(int loop);
-int		kill(pid_t pid, int sig);
-void	signal_received(int sig);
-
-#endif
+	memory = (unsigned char *)b;
+	while (len > 0)
+	{
+		*memory = (unsigned char)c;
+		memory++;
+		len--;
+	}
+	return (b);
+}
